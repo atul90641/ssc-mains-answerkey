@@ -10,8 +10,8 @@ function App() {
   const handleFetchResults = async () => {
     if (!url.trim()) return;
     try {
-      // const response = await fetch(`/api/fetchQuiz?url=${encodeURIComponent(url)}`);
-      const response = await axios.get(`http://localhost:5000/fetch-quiz-data?url=${encodeURIComponent(url)}`);
+      const response = await fetch(`/api/fetchQuiz?url=${encodeURIComponent(url)}`);
+      // const response = await axios.get(`http://localhost:5000/fetch-quiz-data?url=${encodeURIComponent(url)}`);
       
       if (response.status !== 200) {
         throw new Error("Failed to fetch data.");
@@ -31,7 +31,7 @@ function App() {
 
   return (
     <div className="container">
-      <h1>Answer Key Calculator</h1>
+      <h1>CGL Mains Answer Key Calculator</h1>
       <input
         type="text"
         placeholder="Enter URL here..."

@@ -11,7 +11,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 140vh;
+  height: 100vh;
 }
 
 h1 {
