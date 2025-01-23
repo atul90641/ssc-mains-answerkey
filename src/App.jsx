@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Results from "./Results";
 import './App.css'; // Import the CSS
-import axios from "axios";
 
 function App() {
   const [url, setUrl] = useState("");
