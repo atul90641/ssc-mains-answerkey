@@ -11,13 +11,11 @@ function App() {
     if (!url.trim()) return;
     try {
       const response = await fetch(`/api/fetchQuiz?url=${encodeURIComponent(url)}`);
-      // const response = await axios.get(`http://localhost:5000/fetch-quiz-data?url=${encodeURIComponent(url)}`);
-      
-      if (response.status !== 200) {
+      if (!response.ok) {
         throw new Error("Failed to fetch data.");
       }
-      
-      setData(response.data);
+      const htmlText = await response.text();
+      setData(htmlText);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
