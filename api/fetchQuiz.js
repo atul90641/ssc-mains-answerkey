@@ -8,11 +8,16 @@ export default async function handler(req, res) {
   }
 
   try {
-    console.log(`Fetching URL: ${url}`);
-    const response = await axios.get(url, { timeout: 10000 });
+    const response = await axios.get(url, { timeout: 5000 }); // Optional: Set a timeout
     res.status(200).send(response.data);
   } catch (error) {
-    console.error("Error details:", error.toJSON ? error.toJSON() : error.message);
-    res.status(500).json({ error: "Error fetching data", details: error.message });
+    // Log the error to understand what went wrong
+    console.error('Error fetching data:', error.response || error.message);
+    
+    // Return more details in the error response
+    res.status(500).json({
+      error: "Error fetching data",
+      details: error.response ? error.response.data : error.message
+    });
   }
 }
